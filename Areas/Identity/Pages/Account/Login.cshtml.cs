@@ -58,7 +58,7 @@ namespace Projekti.Areas.Identity.Pages.Account
         [TempData]
         public string ErrorMessage { get; set; }
 
-        //public string RecaptchaSiteKey { get; set; } = "6Lffh8wpAAAAAFoA_tT-gkqyIhZ90KNUuR2yDwrx";
+        //public string RecaptchaSiteKey { get; set; } = "vendos Site Key";
 
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
