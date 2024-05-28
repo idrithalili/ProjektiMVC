@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -50,12 +54,15 @@
                 <li><a asp-action="Index" asp-controller="Autore">Autoret</a></li>
                 <li><a asp-action="Index" asp-controller="ShtepiBotuese">Shtepite Botuese</a></li>
                 <li><a asp-action="Index" asp-controller="Zhanre">Zhanret</a></li>
-                <li><a asp-action="Menaxhimi" asp-controller="Home">Administrimi dhe Menaxhimi</a></li>
+                @if (User.IsInRole("Admin") || User.IsInRole("Menaxher"))
+                {
+                    <li><a asp-action="Menaxhimi" asp-controller="Home">Administrimi dhe Menaxhimi</a></li>
+                }
                 <li><a href="#">Kontribuo</a></li>
                 <li><a href="#">About Us</a></li>
                 <li><a asp-action="Create" asp-controller="Kontakt">Contact Us</a></li>
                 <li><partial name="_LoginPartial" /></li>
-                <form class="social_icon" method="get" asp-action="Kerkim" asp-controller="Libra" style="float:right; ">
+                <form class="social_icon" method="get" asp-action="Kerkim" asp-controller="Libra" style="float:right; padding-top:10px">
                     <input type="text" name="searchTerm" placeholder="Kerko libra">
                     <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
