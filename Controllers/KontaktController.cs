@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Projekti.Controllers
 {
-    [Authorize(Roles = "User")]
+    [Authorize]
     public class KontaktController : Controller
     {
         private readonly ApplicationDbContext _context;
