@@ -2,7 +2,7 @@
 
 namespace Projekti.Models
 {
-    public class UserViewModel : IdentityUser
+    public class UserViewModel : ApplicationUser
     {
         public string Id { get; set; }
         public string UserName { get; set; }

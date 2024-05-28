@@ -16,16 +16,17 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using reCAPTCHA.Net;
 using Microsoft.Extensions.Configuration;
+using Projekti.Models;
 
 namespace Projekti.Areas.Identity.Pages.Account
 {
     public class LoginModel : PageModel
     {
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
         //private readonly IRecaptchaService _recaptchaService;
 
-        public LoginModel(SignInManager<IdentityUser> signInManager, ILogger<LoginModel> logger /*,IRecaptchaService recaptchaService*/)
+        public LoginModel(SignInManager<ApplicationUser> signInManager, ILogger<LoginModel> logger /*,IRecaptchaService recaptchaService*/)
         {
             _signInManager = signInManager;
             _logger = logger;

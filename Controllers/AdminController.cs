@@ -14,11 +14,11 @@ namespace Projekti.Controllers
     public class AdminController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly UserManager<IdentityUser> UserManager;
+        private readonly UserManager<ApplicationUser> UserManager;
         public RoleManager<IdentityRole> RoleManager;
         public IEnumerable<IdentityRole> Roles { get; set; }
 
-        public AdminController(UserManager<IdentityUser> userManager,
+        public AdminController(UserManager<ApplicationUser> userManager,
         RoleManager<IdentityRole> roleManager,
         ApplicationDbContext context)
         {

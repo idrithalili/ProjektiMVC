@@ -1,7 +1,10 @@
-﻿@inject SignInManager<IdentityUser> SignInManager
+﻿@using Projekti.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
 }
+
 
 <br />
 <br />

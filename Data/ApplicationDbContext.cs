@@ -5,7 +5,7 @@ using Projekti.Models;
 
 namespace Projekti.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Libra>? Libra { get; set; }
         public DbSet<Autore>? Autore { get; set; }

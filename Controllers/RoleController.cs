@@ -8,10 +8,10 @@ namespace Projekti.Controllers
     [Authorize(Roles = "Menaxher")]
     public class RoleController : Controller
     {
-        public UserManager<IdentityUser> UserManager;
+        public UserManager<ApplicationUser> UserManager;
         public RoleManager<IdentityRole> RoleManager;
         public IEnumerable<IdentityRole> Roles { get; set; }
-        public RoleController(UserManager<IdentityUser> userManager,
+        public RoleController(UserManager<ApplicationUser> userManager,
         RoleManager<IdentityRole> roleManager)
         {
             UserManager = userManager;
