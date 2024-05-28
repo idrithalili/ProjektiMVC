@@ -1,0 +1,43 @@
+﻿@model Projekti.Models.BotimeLibrash
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>BotimeLibrash</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdLibri)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdLibri)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NumerKopjesh)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NumerKopjesh)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Viti)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Viti)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Formati)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Formati)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.IdBotimi">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

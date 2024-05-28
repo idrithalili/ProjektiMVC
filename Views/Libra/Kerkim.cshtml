@@ -1,0 +1,27 @@
+﻿@model List<Libra>
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<h2>Rezultatet e kerkimit:</h2>
+
+@if (Model != null && Model.Any())
+{
+    <ul>
+        @foreach (var liber in Model)
+        {
+            <li>@liber.Titulli, 
+                <a asp-action="Details" asp-controller="Libra" asp-route-id="@liber.Id">Detaje</a>
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>Asnje rezultat nuk u gjet.</p>
+}

@@ -1,0 +1,52 @@
+﻿@model Projekti.Models.Autore
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<h1>Edit</h1>
+
+<h4>Autore</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="EmerAutori" class="control-label"></label>
+                <input asp-for="EmerAutori" readonly class="form-control" />
+                <span asp-validation-for="EmerAutori" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MbiemerAutori" class="control-label"></label>
+                <input asp-for="MbiemerAutori" readonly class="form-control" />
+                <span asp-validation-for="MbiemerAutori" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Vendbanimi" class="control-label"></label>
+                <input asp-for="Vendbanimi" class="form-control" />
+                <span asp-validation-for="Vendbanimi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

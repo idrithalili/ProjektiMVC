@@ -1,0 +1,322 @@
+﻿@model IEnumerable<Projekti.Models.Libra>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<head>
+    <style>
+        #tabela {
+            border: 1px solid black;
+            border-collapse: separate;
+            width: 90%;
+            height: 90%;
+            margin-left: 5%;
+            margin-top: 50px;
+            margin-bottom: 100px;
+        }
+
+        table tr th {
+            border: 1px solid black;
+            border-collapse: separate;
+            text-align: center;
+        }
+
+        table tr td {
+            border: 1px solid black;
+            border-collapse: separate;
+            text-align: center;
+        }
+    </style>
+</head>
+<div class="kopertine">
+    <div class="kopertine_tag">
+        <h1>MIRE SE VINI NE <br><span>LIBRARI ONLINE</span></h1>
+
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda molestias atque laborum
+            non fuga ex deserunt. Exercitationem velit ducimus praesentium, obcaecati hic voluptate id
+            tenetur fuga illum quidem omnis? Rerum?
+        </p>
+        <a href="#" class="kopertine_btn">Kliko per me shume</a>
+
+    </div>
+
+    <div class="kopertine_img">
+        <img src="~/img/table.png">
+    </div>
+
+</div>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<div class="featured_boks">
+
+    <h1>Libra te perzgjedhur</h1>
+
+    <div class="featured_book_box">
+
+        <div class="featured_book_card">
+
+            <div class="featurde_book_img">
+                <img src="~/img/book_1.jpg">
+            </div>
+
+            <div class="featurde_book_tag">
+                <h2>Cocogoose</h2>
+                <p class="writer">Edward Lee</p>
+                <div class="categories">Romance</div>
+                <p class="book_price">$25.50<sub><del>$28.60</del></sub></p>
+                <a asp-action="Details" asp-controller="Libra" asp-route-id="1" class="f_btn">Meso me shume</a>
+            </div>
+
+        </div>
+
+        <div class="featured_book_card">
+
+            <div class="featurde_book_img">
+                <img src="~/img/book_2.jpg">
+            </div>
+
+            <div class="featurde_book_tag">
+                <h2>Subletter</h2>
+                <p class="writer">L.C. Kincaide</p>
+                <div class="categories">Roman, Aventure</div>
+                <p class="book_price">$25.50<sub><del>$28.60</del></sub></p>
+                <a asp-action="Details" asp-controller="Libra" asp-route-id="2" class="f_btn">Meso me shume</a>
+            </div>
+
+        </div>
+
+        <div class="featured_book_card">
+
+            <div class="featurde_book_img">
+                <img src="~/img/book_3.jpg">
+            </div>
+
+            <div class="featurde_book_tag">
+                <h2>Westpart</h2>
+                <p class="writer">T.A. White</p>
+                <div class="categories">Horror</div>
+                <p class="book_price">$25.50<sub><del>$28.60</del></sub></p>
+                <a asp-action="Details" asp-controller="Libra" asp-route-id="3" class="f_btn">Meso me shume</a>
+            </div>
+
+        </div>
+
+        <div class="featured_book_card">
+
+            <div class="featurde_book_img">
+                <img src="~/img/book_4.jpg">
+            </div>
+
+            <div class="featurde_book_tag">
+                <h2>Beautiful</h2>
+                <p class="writer">Amy Reed</p>
+                <div class="categories">Roman, Romance</div>
+                <p class="book_price">$25.50<sub><del>$28.60</del></sub></p>
+                <a asp-action="Details" asp-controller="Libra" asp-route-id="4" class="f_btn">Meso me shume</a>
+            </div>
+
+        </div>
+
+        <div class="featured_book_card">
+
+            <div class="featurde_book_img">
+                <img src="~/img/book_5.jpg">
+            </div>
+
+            <div class="featurde_book_tag">
+                <h2>Clever Lands</h2>
+                <p class="writer">Lucy Crehan</p>
+                <div class="categories">Zhvillim personal</div>
+                <p class="book_price">$25.50<sub><del>$28.60</del></sub></p>
+                <a asp-action="Details" asp-controller="Libra" asp-route-id="5" class="f_btn">Meso me shume</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+
+<table id="tabela">
+    <tr>
+        <th>Libri</th>
+        <th>Autori</th>
+        <th>Zhanri</th>
+        <th>Cmimi</th>
+        <th>Lexo librin</th>
+    </tr>
+    @foreach(var liber in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => liber.Titulli)</td>
+            <td>@Html.DisplayFor(modelItem => liber.Autore.Autori)</td>
+            <td>@Html.DisplayFor(modelItem => liber.Zhanri.Zhanri)</td>
+            <td>@Html.DisplayFor(modelItem => liber.Cmimi)</td>
+            <td><a href="#">Lexo librin</a></td>
+        </tr>
+    }
+    <!--<tr>
+        <td>Cocogoose</td>
+        <td>Edward Lee</td>
+        <td>Romance</td>
+        <td>$25.50</td>
+    </tr>
+    <tr>
+        <td>Subletter</td>
+        <td>L.C. Kincaide</td>
+        <td>Roman, Aventure</td>
+        <td>$25.50</td>
+    </tr>
+    <tr>
+        <td>Westpart</td>
+        <td>T.A. White</td>
+        <td>Horror</td>
+        <td>$25.50</td>
+    </tr>
+    <tr>
+        <td>Beautiful</td>
+        <td>Amy Reed</td>
+        <td>Roman, Romance</td>
+        <td>$25.50</td>
+    </tr>
+    <tr>
+        <td>Clever Lands</td>
+        <td>Lucy Crehan</td>
+        <td>Zhvillim personal</td>
+        <td>$25.50</td>
+    </tr>-->
+</table>
+
+<br>
+<br>
+<br>
+<br>
+
+<h1 style="margin-left: 10%; margin-top: 10%;">Liste e renditur dhe e parenditur:</h1>
+<br>
+<div id="ol">
+    <li>
+        Cocogoose
+        <ul>
+            <li>Bestseller</li>
+            <li>Romance</li>
+        </ul>
+    </li>
+    <li>
+        Subletter
+        <ul>
+            <li>Roman</li>
+            <li>Aventure</li>
+            <li>Shume i pelqyer</li>
+        </ul>
+    </li>
+    <li>
+        Westpart
+        <ul>
+            <li>Horror</li>
+            <li>Per te rritur</li>
+        </ul>
+    </li>
+    <li>
+        Beautiful
+        <ul>
+            <li>Romance</li>
+        </ul>
+    </li>
+    <li>
+        Clever Lands
+        <ul>
+            <li>Permiresim i vetvetes</li>
+        </ul>
+    </li>
+</div>
+
+<br>
+
+<table class="tabeleForm">
+    <form action="#" method="get">
+        <h1 style="margin-left: 20%;margin-bottom: 40px; margin-top: 10%;">Contact Us</h1>
+    <tr>
+        <td>Emer:</td>
+        <td><input type="text" id="emri" required></td>
+    </tr>
+    <tr>
+        <td>Mbiemer:</td>
+        <td><input type="text" id="mbiemri" required></td>
+    </tr>
+    <tr>
+        <td>Gjinia:</td>
+        <td>
+            <input type="radio" id="mashkull">M
+            <input type="radio" id="femer">F
+        </td>
+    </tr>
+    <tr>
+        <td>Mosha:</td>
+        <td><input type="number" id="mosha" required></td>
+    </tr>
+    <tr>
+        <td>Email:</td>
+        <td><input type="email" id="emaili" required></td>
+    </tr>
+    <tr>
+        <td>Numri i telefonit:</td>
+        <td><input type="text" id="nrtel" required></td>
+    </tr>
+    <tr>
+        <td>Mesazhi:</td>
+        <td><textarea id="mesazhi" cols="40" rows="10">Shkruani mesazhin tuaj</textarea></td>
+    </tr>
+    <tr>
+        <td><input type="submit" value="Dergo" onclick="shfaqMesazh(); valido()"></td>
+        <td><input type="reset" value="Reset"></td>
+    </tr>
+    </form>
+</table>
+
+<div id="div1" class="divOut1"></div>
+<div id="div2" class="divOut2"></div>
+
+<audio controls>
+    <source src="~/audio/mixkit-game-show-suspense-waiting-667.wav" type="audio/wav">
+</audio>
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2995.8205435774507!2d19.813853874978633!3d41.33451549927477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1350310db0518c2f%3A0x66adc753e7cc308!2sFaculty%20of%20Natural%20Sciences!5e0!3m2!1sen!2s!4v1686512864247!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+<div class="about">
+
+    <div class="about_image">
+        <img src="~/img/about.png">
+    </div>
+    <div class="about_tag">
+        <h1>Rreth Nesh</h1>
+        <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae cumque atque dolor corporis
+            architecto. Voluptate expedita molestias maxime officia natus consectetur dolor quisquam illo?
+            Quis illum nostrum perspiciatis laboriosam perferendis? Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Minus ad eius saepe architecto aperiam laboriosam voluptas nobis voluptates
+            id amet eos repellat corrupti harum consectetur, dolorum dolore blanditiis quam quo.
+        </p>
+        <a href="#" class="about_btn">Kliko per me shume</a>
+    </div>
+
+</div>

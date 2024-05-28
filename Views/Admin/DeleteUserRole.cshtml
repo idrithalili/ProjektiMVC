@@ -1,0 +1,20 @@
+﻿@model Projekti.Models.UserViewModel
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<h2>Fshi rolin e perdoruesit: @Model.Email</h2>
+
+<form asp-controller="Admin" asp-action="DeleteUserRolePost" method="post" asp-route-id="@Model.Id">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label asp-for="Role">Roli:</label>
+        <label asp-for="Role">@Model.Role</label>
+    </div>
+    <button type="submit" class="btn btn-danger">Fshi rol</button>
+</form>

@@ -1,0 +1,94 @@
+﻿@model Projekti.Models.Libra
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<head>
+    <style>
+        select[readonly] {
+            background-color: #f8f9fa; /* Light gray background */
+            cursor: not-allowed; /* Display not-allowed cursor on hover */
+            pointer-events: none; /* Ignore pointer events */
+        }
+
+            /* Style to show a disabled-like overlay on the dropdown */
+            select[readonly]:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background-color: rgba(255, 255, 255, 0.6); /* Semi-transparent white overlay */
+                pointer-events: none; /* Ignore pointer events on the overlay */
+            }
+    </style>
+</head>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<h1>Edit</h1>
+
+<h4>Libra</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Titulli" class="control-label"></label>
+                <input asp-for="Titulli" readonly class="form-control" />
+                <span asp-validation-for="Titulli" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AutoreId" class="control-label">Autori</label>
+                <select asp-for="AutoreId" readonly class="form-control" asp-items="ViewBag.AutoreId"></select>
+                <span asp-validation-for="AutoreId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ZhanriId" class="control-label">Zhanri</label>
+                <select asp-for="ZhanriId" readonly class="form-control" asp-items="ViewBag.ZhanriId"></select>
+                <span asp-validation-for="ZhanriId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Viti" class="control-label"></label>
+                <input asp-for="Viti" readonly class="form-control" />
+                <span asp-validation-for="Viti" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShtepiBotueseId" class="control-label">Shtepia Botuese</label>
+                <select asp-for="ShtepiBotueseId" readonly class="form-control" asp-items="ViewBag.ShtepiBotueseId"></select>
+                <span asp-validation-for="ShtepiBotueseId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cmimi" class="control-label"></label>
+                <input asp-for="Cmimi" class="form-control" />
+                <span asp-validation-for="Cmimi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pershkrimi" class="control-label"></label>
+                <input asp-for="Pershkrimi" class="form-control" />
+                <span asp-validation-for="Pershkrimi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
