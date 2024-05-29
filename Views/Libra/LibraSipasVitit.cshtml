@@ -1,0 +1,84 @@
+﻿@{
+    ViewData["Title"] = "Kerko libra sipas vitit";
+}
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<head>
+    <style>
+        .book-item {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px 0;
+        }
+
+        .book-item h3 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+
+<h2>Kerko libra sipas vitit</h2>
+
+<div>
+    <label for="yearInput">Vendos vitin:</label>
+    <input type="number" id="yearInput" name="year" />
+    <button id="searchButton">Kerko</button>
+</div>
+
+<div id="results">
+    <!-- Results will be displayed here -->
+</div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#searchButton').click(function () {
+                var year = $('#yearInput').val();
+                if (year) {
+                    $.ajax({
+                        url: '/api/Libra/GjejLibraSipasVitit/' + year,
+                        type: 'GET',
+                        success: function (data) {
+                            var resultsDiv = $('#results');
+                            resultsDiv.empty();
+                            if (data && data.length > 0) {
+                                var resultList = $('<div>');
+                                $.each(data, function (index, book) {
+                                    var bookDiv = $('<div>').addClass('book-item');
+                                    var title = $('<h3>').text(book.titulli);
+                                    var author = $('<p>').text('Autori: ' + (book.autore ? book.autore.autori : 'Nuk dihet'));
+                                    var genre = $('<p>').text('Zhanri: ' + (book.zhanri ? book.zhanri.zhanri : 'Nuk Dihet'));
+                                    var publisher = $('<p>').text('Shtepia Botuese: ' + (book.shtepiBotuese ? book.shtepiBotuese.shtepiaBotuese : 'Nuk dihet'));
+                                    var year = $('<p>').text('Viti: ' + book.viti);
+                                    var price = $('<p>').text('Cmimi: ' + book.cmimi + ' LEK');
+                                    var description = $('<p>').text('Pershkrimi: ' + book.pershkrimi);
+
+                                    bookDiv.append(title, author, genre, publisher, year, price, description);
+                                    resultList.append(bookDiv);
+                                });
+                                resultsDiv.append(resultList);
+                            } else {
+                                resultsDiv.append($('<p>').text('Nuk u gjet asnje liber i botuar ne kete vit.'));
+                            }
+                        },
+                        error: function (xhr) {
+                            var resultsDiv = $('#results');
+                            resultsDiv.empty();
+                            resultsDiv.append($('<p>').text('Error: ' + xhr.responseJSON.message));
+                        }
+                    });
+                } else {
+                    alert('Vendosni nje vit te sakte.');
+                }
+            });
+        });
+    </script>
+}

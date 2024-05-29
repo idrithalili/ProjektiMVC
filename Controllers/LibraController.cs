@@ -11,7 +11,9 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Projekti.Controllers
 {
-    
+
+    [Route("api/[controller]")]
+    [ApiController]
     public class LibraController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -21,6 +23,35 @@ namespace Projekti.Controllers
             _context = context;
         }
 
+        [HttpGet("LibraSipasVitit")]
+        [AllowAnonymous]
+        public IActionResult LibraSipasVitit()
+        {
+            return View();
+        }
+
+        // GET: api/Libra/GjejLibraSipasVitit/{viti}
+        [HttpGet("GjejLibraSipasVitit/{viti}")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GjejLibraSipasVitit(int viti)
+        {
+            var libra = await _context.Libra
+                                      .Include(l => l.Autore)
+                                      .Include(l => l.ShtepiBotuese)
+                                      .Include(l => l.Zhanri)
+                                      .Where(l => l.Viti == viti)
+                                      .ToListAsync();
+
+            if (libra == null || libra.Count == 0)
+            {
+                return NotFound(new { message = "No books found for the specified year." });
+            }
+
+            return Ok(libra);
+        }
+
+
+        [HttpGet("Kerkim")]
         [AllowAnonymous]
         public IActionResult Kerkim(string searchTerm)
         {
@@ -32,6 +63,7 @@ namespace Projekti.Controllers
         }
 
         // GET: Libra
+        [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
@@ -40,6 +72,7 @@ namespace Projekti.Controllers
         }
 
         // GET: Libra/Details/5
+        [HttpGet("Details/{id}")]
         [AllowAnonymous]
         public async Task<IActionResult> Details(int? id)
         {
@@ -62,6 +95,7 @@ namespace Projekti.Controllers
         }
 
         // GET: Libra/Create
+        [HttpGet("Create")]
         [Authorize(Roles = "Administrator")]
         public IActionResult Create()
         {
@@ -74,7 +108,7 @@ namespace Projekti.Controllers
         // POST: Libra/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost("Create")]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Create([Bind("Id,Titulli,AutoreId,ZhanriId,Viti,ShtepiBotueseId,Cmimi,Pershkrimi")] Libra libra)
@@ -92,6 +126,7 @@ namespace Projekti.Controllers
         }
 
         // GET: Libra/Edit/5
+        [HttpGet("Edit/{id}")]
         [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Edit(int? id)
         {
@@ -114,7 +149,7 @@ namespace Projekti.Controllers
         // POST: Libra/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost("Edit/{id}")]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Edit(int? id, [Bind("Id,Titulli,AutoreId,ZhanriId,Viti,ShtepiBotueseId,Cmimi,Pershkrimi")] Libra libra)
@@ -152,6 +187,7 @@ namespace Projekti.Controllers
         }
 
         // GET: Libra/Delete/5
+        [HttpGet("Delete/{id}")]
         [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Delete(int? id)
         {
@@ -174,7 +210,7 @@ namespace Projekti.Controllers
         }
 
         // POST: Libra/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost("Delete/{id}"), ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> DeleteConfirmed(int? id)
