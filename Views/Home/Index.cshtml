@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<Projekti.Models.Libra>
+@using Projekti.Models
 
 @{
     ViewData["Title"] = "Home Page";
@@ -25,6 +26,10 @@
         table tr td {
             border: 1px solid black;
             border-collapse: separate;
+            text-align: center;
+        }
+
+        .genre-selection{
             text-align: center;
         }
     </style>
@@ -64,6 +69,12 @@
 <br>
 <br>
 
+
+<div class="genre-selection">
+    <h2>Personalizoni eksperiencen tuaj</h2>
+    <p>Perzgjidhni zhanret tuaja te preferuara.</p>
+    <a asp-controller="Home" asp-action="SelectGenres" class="btn btn-primary">Perzgjidh zhanre</a>
+</div>
 
 <div class="featured_boks">
 

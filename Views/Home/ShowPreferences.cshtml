@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Projekti.Models.Libra>
+
+@{
+    ViewData["Title"] = "Libra te zhanreve te preferuar";
+}
+
+<head>
+    <style>
+        #tabela {
+            font-family: Arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+            #tabela th {
+                background-color: #f2f2f2;
+                border: 1px solid #dddddd;
+                padding: 8px;
+                text-align: left;
+            }
+
+            #tabela td {
+                border: 1px solid #dddddd;
+                padding: 8px;
+            }
+
+            #tabela tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            #tabela tr:hover {
+                background-color: #ddd;
+            }
+    </style>
+</head>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<h2>Libra te zhanreve te preferuar</h2>
+
+<table id="tabela">
+    <tr>
+        <th>Libri</th>
+        <th>Autori</th>
+        <th>Zhanri</th>
+        <th>Cmimi</th>
+        <th>Lexo librin</th>
+    </tr>
+    @foreach (var liber in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => liber.Titulli)</td>
+            <td>@Html.DisplayFor(modelItem => liber.Autore.Autori)</td>
+            <td>@Html.DisplayFor(modelItem => liber.Zhanri.Zhanri)</td>
+            <td>@Html.DisplayFor(modelItem => liber.Cmimi)</td>
+            <td><a href="#">Lexo librin</a></td>
+        </tr>
+    }
+</table>

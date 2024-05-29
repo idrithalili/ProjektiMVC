@@ -1,0 +1,28 @@
+﻿@model Projekti.Models.UserPreferencesViewModel
+
+@{
+    ViewData["Title"] = "Perzgjidhni zhanret tuaja te preferuara";
+}
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+<h2>Perzgjidhni zhanret tuaja te preferuara</h2>
+
+<form asp-action="SavePreferences" method="post">
+    <div>
+        @foreach (var genre in Model.Genres)
+        {
+            <div>
+                <input type="checkbox" name="SelectedGenreIds" value="@genre.Id" />
+                <label>@genre.Zhanri</label>
+            </div>
+        }
+    </div>
+    <button type="submit">Ruaj preferencat</button>
+</form>
