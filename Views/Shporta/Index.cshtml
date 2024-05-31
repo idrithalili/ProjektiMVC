@@ -1,0 +1,41 @@
+﻿@model Projekti.Models.Shporta
+
+@{
+    ViewBag.Title = "Shopping Cart";
+}
+
+<h2>Shopping Cart</h2>
+
+<table class="table">
+    <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Total</th>
+    </tr>
+    @foreach (var item in Model.Items)
+    {
+        <tr>
+            <td>@item.libra.Titulli</td>
+            <td>@item.NumriLibrave</td>
+            <td>@item.libra.Cmimi.ToString("c")</td>
+            <td>@(item.libra.Cmimi * item.NumriLibrave).ToString("c")</td>
+        </tr>
+    }
+</table>
+
+<p>Total: @Model.ComputeTotalValue().ToString("c")</p>
+
+<p>
+    @Html.ActionLink("Continue Shopping", "Index", "Product") |
+    @Html.ActionLink("Checkout", "Checkout", "Order")
+</p>
+
+<!-- Payment buttons -->
+<form asp-action="PayWithPayPal" method="post">
+    <button type="submit" class="btn btn-primary">Pay with PayPal</button>
+</form>
+
+<form asp-action="PayWithStripe" method="post">
+    <button type="submit" class="btn btn-primary">Pay with Stripe</button>
+</form>

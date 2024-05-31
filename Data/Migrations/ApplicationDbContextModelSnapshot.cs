@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Projekti.Data;
+using Projekti.Models;
 
 #nullable disable
 
@@ -499,5 +500,7 @@ namespace Projekti.Data.Migrations
                 });
 #pragma warning restore 612, 618
         }
+            
+
     }
 }
